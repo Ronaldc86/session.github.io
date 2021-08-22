@@ -1,0 +1,31 @@
+<html>
+	<head></head>
+	<body>
+		<div id="welcomeid"></div>
+		<a href="javascript:void(0)" id="logout">Logout</a>
+		<!--- ENTER THE CONTENT OF HOME HERE -->
+		<a href="add-form.html"><h3>Add New Issue</h3></a>
+	
+		<script>
+			// check if current user is logged in
+			var currentUser = localStorage.getItem("__currentUser", false)
+
+			if (!currentUser) {
+
+				window.location.href = "./index.html"
+			}
+	
+		currentUser = JSON.parse(currentUser)
+			document.getElementById('welcomeid').innerHTML = `Welcome back ${currentUser.username}`
+			// delete user information if user clicks logout
+			document.getElementById('logout').addEventListener('click', function () {
+
+				localStorage.removeItem("__currentUser")
+
+				window.location.href = "./index.html"
+			})
+			
+				
+		</script>
+	</body>
+</html>
