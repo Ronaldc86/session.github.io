@@ -1,0 +1,121 @@
+<html>
+
+	<head>
+	  
+	</head>
+
+	<body>
+		
+		<a href="javascript:void(0)" id="logout">Logout</a>
+		<!--- ENTER THE CONTENT OF HOME HERE --><h1>Add Issue</h1>
+		<div class="container">
+		  <input type="text" name="" id="username1" value="" placeholder="Name"/>
+		   <input type="text" name="" id="lastname" value="" placeholder="Last Name" />
+		   <br/>
+		   <button type="button" id="btn" onclick="refreshPage()">Add</button>
+		  
+		  <div id="result1"></div>
+		</div>
+	 <script src="main.js"></script>
+			<script>
+
+	var currentUser = localStorage.getItem("__currentUser", false)
+	if (!currentUser) {
+	window.location.href = "./index.html"
+	}
+
+			
+			// delete user information if user clicks logout
+			document.getElementById('logout').addEventListener('click', function () {
+
+				localStorage.removeItem("__currentUser")
+
+				window.location.href = "./index.html"
+			})
+			
+	
+	
+	
+let data1 = localStorage.getItem("__issues") // load all users
+
+var id = 0
+
+
+if (!data1) data1 = []
+else {
+  data1 = JSON.parse(data1)
+
+  data1.forEach(function (rowData) {
+  if (!rowData) return
+  id+=1
+ 
+
+let li = document.createElement('li');
+ 
+
+  // Get values from local storage and add html
+ 
+  document.getElementById('result1').appendChild(li).innerHTML = `
+        
+     Name:  ${rowData.username1}<br/>
+     Last Name: ${rowData.lastname}
+     
+        `
+        
+  })
+}
+function refreshPage(){
+    window.location.reload();
+} 
+
+   let button = document.getElementById('btn')     
+  button.addEventListener("click", myFunction);
+  
+
+function myFunction(){
+id+=1
+  // Create Li
+let li = document.createElement('li');
+
+currentUser = JSON.parse(currentUser)
+  // Get values
+let username1 = document.getElementById('username1').value = `${currentUser.username}`
+let lastname = document.getElementById('lastname').value;
+// clear inputs
+
+
+  // Create text
+let text = document.createTextNode(username1);
+li.appendChild(text);
+let text1 = document.createTextNode(lastname);
+li.appendChild(text1);
+
+
+document.getElementById('result1').appendChild(li).innerHTML = `
+    
+ Name:  ${username1}<br/>
+ Last Name: ${lastname}<br/>
+ 
+    `
+    data1.push({
+      id,
+      username1,
+      lastname,
+     
+      
+    })
+    localStorage.setItem("__issues", JSON.stringify(data1))
+    document.getElementById('username1').value = ""
+
+document.getElementById('lastname').value = ""
+
+} 
+
+			
+
+		
+		</script>
+		
+	</body>
+
+</html>
