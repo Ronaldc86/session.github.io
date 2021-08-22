@@ -69,10 +69,7 @@ let li = document.createElement('li');
   })
   var currentUser = localStorage.getItem("__currentUser", false)
 
-			if (!currentUser) {
-
-				window.location.href = "./main-home.html"
-			}
+			
 			currentUser = JSON.parse(currentUser)
 
 			document.getElementById('welcomeid').innerHTML = `You are signed as: ${currentUser.username}
@@ -81,7 +78,7 @@ let li = document.createElement('li');
 
   
 }
- // check if current user is logged in
+ 
 			
 			
  </script>
