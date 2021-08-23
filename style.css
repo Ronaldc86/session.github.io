@@ -10,3 +10,20 @@ body {
 	font-weight: 600;
 }
 .form-error { font-size: 11px; color: red; }
+   .btnClose{
+    position: absolute;
+   
+     right: 30px;
+  
+     background-image: linear-gradient(to right, #e52d27,#b31217);
+     color: white;
+     padding: 6px 12px 6px 12px;
+     text-decoration: none;
+     display: inline-block;
+     border: none;
+     border-radius: 5px;
+     font-weight: bold;
+     font-size: 12pt;
+    font-family: 'Roboto', sans-serif;
+    
+   }

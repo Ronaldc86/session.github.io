@@ -17,11 +17,11 @@
 <body>
   
 	   <div><a href="main-home.html">Home</a></div>
-		
+		<div id="counter"></div>
 		<a href="javascript:void(0)" id="logout">Logout</a>
 		<!--- ENTER THE CONTENT OF HOME HERE --><h1>Add Issue</h1>
 		<div class="container">
-		  <input type="text" name="" id="username1" value="" placeholder="Name"/>
+		  <input type="hidden" name="" id="username1" value=""/>
 		   <input type="text" name="" id="lastname" value="" placeholder="Last Name" />
 		   <br/>
 		   <button type="button" id="btn" onclick="refreshPage()">Add</button>
@@ -57,7 +57,7 @@ if (!data1) data1 = []
 else {
   data1 = JSON.parse(data1)
 
-  data1.forEach(function (rowData) {
+  data1.forEach(function (rowData,idx) {
   if (!rowData) return
   id+=1
  
@@ -68,14 +68,17 @@ let li = document.createElement('li');
   // Get values from local storage and add html
  
   document.getElementById('result1').appendChild(li).innerHTML = `
-        
+       <button class="btnClose" data-id="${id}">Delete</button>  
      Name:  ${rowData.username1}<br/>
      Last Name: ${rowData.lastname}
      
         `
+      counter =  document.getElementById('counter').innerHTML = data1.length;
         
   })
 }
+
+
 function refreshPage(){
     window.location.reload();
 } 
@@ -92,6 +95,7 @@ let li = document.createElement('li');
 currentUser = JSON.parse(currentUser)
   // Get values
 let username1 = document.getElementById('username1').value = `${currentUser.username}`
+
 let lastname = document.getElementById('lastname').value;
 // clear inputs
 
@@ -103,8 +107,9 @@ let text1 = document.createTextNode(lastname);
 li.appendChild(text1);
 
 
+
 document.getElementById('result1').appendChild(li).innerHTML = `
-    
+   <button class="btnClose" data-id="${id}">Delete</button>  
  Name:  ${username1}<br/>
  Last Name: ${lastname}<br/>
  
@@ -112,18 +117,39 @@ document.getElementById('result1').appendChild(li).innerHTML = `
     data1.push({
       id,
       username1,
-      lastname,
+      lastname
      
       
     })
     localStorage.setItem("__issues", JSON.stringify(data1))
-    document.getElementById('username1').value = ""
-
-document.getElementById('lastname').value = ""
-
 } 
 
+
+function hasClass( target, className ) {
+
+    return new RegExp('(\\s|^)' + className + '(\\s|$)').test(target.className);
+
+}
+
+// setup click event listeners for dynamic buttons such as active and delete
+document.addEventListener('click', function (e) {
+    if (hasClass(e.target, 'btnClose')) {
+      var myID = e.target.getAttribute('data-id')
+      data1.forEach(function (rowData, idx) {
+        if (!rowData) return;
+        if (rowData.id == myID) delete data1[idx]
+      })
+      
+      e.target.parentElement.remove()
+      
+    }
+  localStorage.setItem("__issues", JSON.stringify(data1))
+
+
+} )
+
 			
+  
 
 		
 		</script>
