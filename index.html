@@ -15,24 +15,74 @@
 </head>
 
 <body>
-  
-  <div><a href="main-home.html">Home</a></div>
-  
-  <input type="text" name="username" id="username" value="" placeholder="User Name" />
-  <input type="password" name="password" id="password" value="" placeholder="Password" />
-   
-  <button type="button" id="sign-in-btn">Sign in</button>
-  
-  <div id="result"></div>
-  <!-- Project -->
-  <script src="main.js"></script>
-  <script>
-    // check if current user is still logged in
-    var currentUser = localStorage.getItem("__currentUser", false)
-    if (currentUser) {
-      window.location.href = "./home.html"
-    }
-  </script>
 
+
+<h1>All Issues</h1>
+
+<div class="container">
+  <p id="welcomeid"></p>
+   <div>
+  <a href="register.html">Sign Up</a>
+   </div><br />
+   <span> <a href="main-home.html">Sign In</a></dpan>
+  <div id="result1"></div>
+</div>
+ 
+ <script>
+   
+ 
+		
+			
+			
+	
+  
+
+
+	
+	
+let data1 = localStorage.getItem("__issues") // load all users
+
+var id = 0
+
+
+if (!data1) data1 = []
+else {
+  data1 = JSON.parse(data1)
+
+  data1.forEach(function (rowData) {
+  if (!rowData) return
+  id+=1
+ 
+
+let li = document.createElement('li');
+ 
+
+  // Get values from local storage and add html
+ 
+  document.getElementById('result1').appendChild(li).innerHTML = `
+      
+     Name:  ${rowData.username1}<br/>
+     Last Name: ${rowData.lastname}
+     
+        `
+        
+  })
+  var currentUser = localStorage.getItem("__currentUser", false)
+
+			
+			currentUser = JSON.parse(currentUser)
+
+			document.getElementById('welcomeid').innerHTML = `You are signed as: ${currentUser.username}
+			Go to <a href="home.html">Dashboard</a>
+			`
+
+}
+ 
+			
+			
+ </script>
 </body>
 </html
+
+
+
