@@ -1,159 +1,255 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <title>HTML</title>
-  
   <!-- HTML -->
-  
-
   <!-- Custom Styles -->
   <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 </head>
 
 <body>
+
+
+  <!--- ENTER THE CONTENT OF HOME HERE -->
   
-	   <div><a href="main-home.html">Home</a></div>
-		<div id="counter"></div>
-		<a href="javascript:void(0)" id="logout">Logout</a>
-		<!--- ENTER THE CONTENT OF HOME HERE --><h1>Add Issue</h1>
-		<div class="container">
-		  <input type="hidden" name="" id="username1" value=""/>
-		   <input type="text" name="" id="lastname" value="" placeholder="Last Name" />
-		   <br/>
-		   <button type="button" id="btn" onclick="refreshPage()">Add</button>
-		  
-		  <div id="result1"></div>
-		</div>
-	 <script src="main.js"></script>
-			<script>
-
-	var currentUser = localStorage.getItem("__currentUser", false)
-	if (!currentUser) {
-	window.location.href = "./index.html"
-	}
-
-			
-			// delete user information if user clicks logout
-			document.getElementById('logout').addEventListener('click', function () {
-
-				localStorage.removeItem("__currentUser")
-
-				window.location.href = "./index.html"
-			})
-			
-	
-	
-	
-let data1 = localStorage.getItem("__issues") // load all users
-
-var id = 0
-
-
-if (!data1) data1 = []
-else {
-  data1 = JSON.parse(data1)
-
-  data1.forEach(function (rowData,idx) {
-  if (!rowData) return
-  id+=1
+ <div class="gridContainer-bugform">
+    <div class="header2"></div>
+    
+    
+ <div class="user2"> <p id="welcomeid" class="welcome"></p>
+ <a href="home.html">  <img src="images/user.png" alt="" class="user-img"/></div></a>
+  
+    
+ <div class="logout2"><a href="javascript:void(0)" id="logout"><img src="images/log-out.png" alt="" class="logout-img" />  </a></div>
  
-
-let li = document.createElement('li');
- 
-
-  // Get values from local storage and add html
- 
-  document.getElementById('result1').appendChild(li).innerHTML = `
-       <button class="btnClose" data-id="${id}">Delete</button>  
-     Name:  ${rowData.username1}<br/>
-     Last Name: ${rowData.lastname}
-     
-        `
-      counter =  document.getElementById('counter').innerHTML = data1.length;
+ <div class="bug-form">
+    <div class="container5">
+    
         
-  })
-}
 
+   
 
-function refreshPage(){
-    window.location.reload();
-} 
-
-   let button = document.getElementById('btn')     
-  button.addEventListener("click", myFunction);
+      
+   
+      
   
-
-function myFunction(){
-id+=1
-  // Create Li
-let li = document.createElement('li');
-
-currentUser = JSON.parse(currentUser)
-  // Get values
-let username1 = document.getElementById('username1').value = `${currentUser.username}`
-
-let lastname = document.getElementById('lastname').value;
-// clear inputs
-
-
-  // Create text
-let text = document.createTextNode(username1);
-li.appendChild(text);
-let text1 = document.createTextNode(lastname);
-li.appendChild(text1);
-
-
-
-document.getElementById('result1').appendChild(li).innerHTML = `
-   <button class="btnClose" data-id="${id}">Delete</button>  
- Name:  ${username1}<br/>
- Last Name: ${lastname}<br/>
- 
-    `
-    data1.push({
-      id,
-      username1,
-      lastname
+    <input type="hidden" name="" id="username1" value="" />
+    <input type="hidden" name="" id="email" value="" />
+    <input type="hidden" name="" id="date1" value="" />
+    <input type="hidden" name="" id="time1" value="" />
+    <select name="priority" id="priority">
+      <option selected="">Select</option>
+      <option value="Low">Low</option>
+      <option value="Medium">Medium</option>
+      <option value="High">High</option>
+    </select>
+    <input type="text" maxlength="40" name="" id="projectName" value="" placeholder="Project Name" />
+    
+    <input type="tel" maxlength="6" name=""  id="line" value="" placeholder="Code Line" class="input-line" />
+    
+    <textarea placeholder="Enter the issue" name="textArea" id=textArea rows="8" cols="40"></textarea>
+    
+    <button class="btn-signin-bug"type="button"  id="btn" >Add</button>
      
       
+      <div id="result4" class="bug-form-error"></div>
+ </div>
+ 
+  
+
+
+  </div>
+  <div id="result1" hidden ></div>
+ </div>
+  <script src="main.js"></script>
+  <script>
+    var currentUser = localStorage.getItem("__currentUser", false)
+    if (!currentUser) {
+      window.location.href = "./index.html"
+    }
+
+
+    // delete user information if user clicks logout
+    document.getElementById('logout').addEventListener('click', function() {
+
+      localStorage.removeItem("__currentUser")
+
+      window.location.href = "./index.html"
     })
-    localStorage.setItem("__issues", JSON.stringify(data1))
-} 
+   
+    
 
 
-function hasClass( target, className ) {
 
-    return new RegExp('(\\s|^)' + className + '(\\s|$)').test(target.className);
+let button = document.getElementById('btn')
+    button.addEventListener("click", myFunction);
 
+
+    function myFunction() {
+      id += 1
+      // Create Li
+      let li = document.createElement('li');
+    li.className = "myLi";
+
+      
+      let d = new Date().toLocaleDateString();
+      document.getElementById("date1").value;
+      let t = new Date().toLocaleTimeString();
+      document.getElementById("time1").value;
+      let projectName = document.getElementById('projectName').value;
+      let line = document.getElementById('line').value;
+
+      let priority = document.getElementById('priority').value;
+      let textArea = document.getElementById('textArea').value;
+
+
+      // clear inputs
+
+
+      // Create text
+      
+      let text2 = document.createTextNode(d);
+      li.appendChild(text2);
+      let text3 = document.createTextNode(t);
+      li.appendChild(text3);
+      let text4 = document.createTextNode(projectName);
+      li.appendChild(text4);
+      let text5 = document.createTextNode(line);
+      li.appendChild(text5);
+      let text6 = document.createTextNode(priority);
+      li.appendChild(text6);
+      let text7 = document.createTextNode(textArea);
+      li.appendChild(text7);
+if(!priority){
+  document.getElementById('result4').innerHTML = 'Priority is required'
+}else if(!projectName){
+document.getElementById('result4').innerHTML = 'Project name is required'
+}else if(!line){
+document.getElementById('result4').innerHTML = 'Line N° is required'
+}else if(!textArea){
+document.getElementById('result4').innerHTML = 'Description is required'
 }
 
-// setup click event listeners for dynamic buttons such as active and delete
-document.addEventListener('click', function (e) {
+
+else{
+data1.push({
+        id,
+        
+        d,
+        t,
+        projectName,
+        line,
+        priority,
+        textArea,
+status: 'Active'
+
+      })
+   
+      document.getElementById('result1').appendChild(li).innerHTML = `
+   <button class="btnClose" data-id="${id}">Delete</button>  
+    <button class="doneBtnActive" data-id="${id}">Active</button>
+  
+
+ <div class="date">Date: ${d}</div><br/>
+ Time:  ${t}<br/>
+ Project Name:  ${projectName}<br/>
+ Code Line:  ${line}<br/>
+ Priority:  ${priority}<br/>
+ Description:  ${textArea}<br/>
+ 
+ 
+    `
+   localStorage.setItem("__issues", JSON.stringify(data1))
+   
+    window.location.replace("./home.html")
+   
+}
+}
+
+
+    let data1 = localStorage.getItem("__issues") // load all users
+
+    var id = 0
+
+
+    if (!data1) data1 = []
+    else {
+      data1 = JSON.parse(data1)
+
+      data1.forEach(function(rowData, idx) {
+        if (!rowData) return
+        id += 1
+
+
+        let li = document.createElement('li');
+
+
+        // Get values from local storage and add html
+
+    
+      if(!projectName){
+  document.getElementById('result4').innerHTML = 'Project name is required'
+}else{
+     
+        document.getElementById('result1').appendChild(li).innerHTML = `
+       <button class="btnClose" data-id="${id}">Delete</button> <button class="doneBtnActive" data-id="${id}" style="${rowData.status=='Closed'?'background:darkgrey':''}">${rowData.status}</button>
+ 
+ <div class="date">Date: ${rowData.d}</div><br/>
+ Time:  ${rowData.t}<br/>
+ Project Name:  ${rowData.projectName}<br/>
+ Code Line:  ${rowData.line}<br/>
+ Priority:  ${rowData.priority}<br/>
+ Description:  ${rowData.textArea}
+ 
+     
+        `
+}
+
+      })
+      
+    }
+
+
+    
+
+    
+    function hasClass(target, className) {
+
+      return new RegExp('(\\s|^)' + className + '(\\s|$)').test(target.className);
+
+    }
+
+    // setup click event listeners for dynamic buttons such as active and delete
+    document.addEventListener('click', function (e) {
     if (hasClass(e.target, 'btnClose')) {
-      var myID = e.target.getAttribute('data-id')
+      let myID = e.target.getAttribute('data-id')
       data1.forEach(function (rowData, idx) {
         if (!rowData) return;
         if (rowData.id == myID) delete data1[idx]
       })
-      
+    
       e.target.parentElement.remove()
       
     }
-  localStorage.setItem("__issues", JSON.stringify(data1))
-
-
-} )
-
-			
-  
-
-		
-		</script>
-		
-	</body>
+    if (hasClass(e.target, 'doneBtnActive')) {
+      console.log(e.target)
+      e.target.innerHTML = 'Closed';
+      e.target.style.backgroundColor = "darkgrey";
+      let myID = e.target.getAttribute('data-id')
+      data1.forEach(function (rowData, idx) {
+        if (!rowData) return;
+        if (rowData.id == myID) data1[idx].status = 'Closed'
+      })
+    }
+    
+    localStorage.setItem("__issues", JSON.stringify(data1))
+}, false);
+  </script>
+</body>
 
 </html>

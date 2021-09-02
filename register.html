@@ -16,29 +16,44 @@
 
 <body>
 
-		<div class="form-item">
-			<label class="form-label">Username</label>
-			<input type="text" name="username" id="username" class="form-input"/>
+<div class="gridContainer-register">
+  
+  <div class="header"><a href="home.html"><img src="images/home-page.png" alt="" class="home-img" /></a></div>
+  
+  <div class="register-form">
+    	
+  
+<div class="container">
+			
+
+			<input type="text" name="username" id="username" placeholder="Username" />
 			<p class="form-error" id="error-username"></p>
-		</div>
-		<div class="form-item">
-			<label class="form-label">Email</label>
-			<input type="text" name="email" id="email" class="form-input"/>
+		
+		
+		
+			<input type="text" name="email" id="email" placeholder="Email" />
 			<p class="form-error" id="error-email"></p>
-		</div>
-		<div class="form-item">
-			<label class="form-label">Password</label>
-			<input type="text" name="password" id="password" class="form-input"/>
+		
+		
+		
+			<input type="text" name="password" id="password" placeholder="Password"/>
 			<p class="form-error" id="error-password"></p>
-		</div>
-		<div class="form-item">
-			<label class="form-label">Confirm Password</label>
-			<input type="text" name="password-confirm" id="password-confirm" class="form-input"/>
+		
+		
+			
+			
+			<input type="text" name="password-confirm" id="password-confirm" placeholder="Password"/>
 			<p class="form-error" id="error-password-confirm"></p>
+		
+		    <input type="submit" value="Sign up"class="btn-signup" id="form-submit">
+		
 		</div>
-		<div class="form-item">
-			<button class="form-btn" id="form-submit" onclick="window.location.href = 'index.html';">Sign Up</button>
-		</div>
-		<script src="./main.js"></script>
+		
+  </div>
+  
+</div>
+
+
+	<script src="./main.js"></script>
 	</body>
 </html>

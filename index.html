@@ -12,73 +12,128 @@
 
   <!-- Custom Styles -->
   <link rel="stylesheet" href="style.css">
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
 </head>
 
 <body>
+  
+  <div class="gridContainer-index">
+    
+ <div class="header">
+   <h2 class="bugText">Bug</h2>
+   <h1 class="trackerText">Tracker</h1>
+ 
+ </div>
+ <div class="user-active">  <div id="welcomeid"></div>
+ 
+ </div>
+ 
+ <div class="logout1"> 
+ <div id="logout"></div>
+  </div>
+ 
+  <div class="buttons">
+   <input type="submit" onclick="document.getElementById('id011').style.display='block'" value="Sign up" class="btn-signup">
 
+  
+ <a href="login.html"> <input type="submit" value="Sign in" class="btn-signin"></a>
+  </div>
+   <div class="signup-form">
+     
+      <div id="id011" class="modal">
+  <form class="modal-content animate" action="">
+    <div class="animate__animated animate__bounce">
+      <img src="images/user.png" alt="Avatar" class="avatar">
+    </div>
 
-<h1>All Issues</h1>
+    <div class="container1">
+      <p class="form-error" id="error-username"></p>
+     <input type="text" name="username" id="username" placeholder="Username" />
+			
+		
+		
+		<p class="form-error" id="error-email"></p>
+			<input type="text" name="email" id="email" placeholder="Email" />
+			
+		
+		
+		<p class="form-error" id="error-password"></p>
+			<input type="text" name="password" id="password" placeholder="Password"/>
+			
+		
+		
+			
+			<p class="form-error" id="error-password-confirm"></p>
+   
+			<input type="text" name="password-confirm" id="password-confirm" placeholder="Password"/>
+			
+  <button type="button" id="id03" class="btn-signup-form">Sign up</button>
+ 
 
-<div class="container">
-  <p id="welcomeid"></p>
-   <div>
-  <a href="register.html">Sign Up</a>
-   </div><br />
-   <span> <a href="main-home.html">Sign In</a></dpan>
-  <div id="result1"></div>
+<span><p id="current-user"></p>
+<p id="checklist"></p><div id="btn-signin"></div></span>
+    </div>
+
+    <div class="container1" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id011').style.display='none'" class="cancelbtn">Cancel</button>
+      
+    </div>
+    </form>
 </div>
+
+   </div>
+ 
+   
+  <div class="login-form">
+   
+   
+</div>
+
+
+  
+   
+
+  </div>
+  
+  
+	<script src="./main.js"></script>
+
+
+
+
+
+  
+
  
  <script>
    
- 
+  // check if current user is still logged in
+    var currentUser = localStorage.getItem("__currentUser", false)
+    
+		currentUser = JSON.parse(currentUser)
+		document.getElementById('welcomeid').innerHTML = `
+		<div class="welcome">	${currentUser.username}</div>
+	<a href="home.html"><img src="images/user.png" alt="" class="user-img"/></a>
 		
+		
+		`
+		document.getElementById('logout').innerHTML = `
 			
-			
-	
-  
+<a href="javascript:void(0)" id="logout"><img src="images/log-out.png" alt="" class="logout-img1" /> </a>
+`
+
+  	// delete user information if user clicks logout
+			document.getElementById('logout').addEventListener('click', function () {
+
+				localStorage.removeItem("__currentUser")
+
+				window.location.href = "./index.html"
+			})
 
 
-	
-	
-let data1 = localStorage.getItem("__issues") // load all users
-
-var id = 0
-
-
-if (!data1) data1 = []
-else {
-  data1 = JSON.parse(data1)
-
-  data1.forEach(function (rowData) {
-  if (!rowData) return
-  id+=1
- 
-
-let li = document.createElement('li');
- 
-
-  // Get values from local storage and add html
- 
-  document.getElementById('result1').appendChild(li).innerHTML = `
-      
-     Name:  ${rowData.username1}<br/>
-     Last Name: ${rowData.lastname}
-     
-        `
-        
-  })
-  var currentUser = localStorage.getItem("__currentUser", false)
-
-			
-			currentUser = JSON.parse(currentUser)
-
-			document.getElementById('welcomeid').innerHTML = `You are signed as: ${currentUser.username}
-			Go to <a href="home.html">Dashboard</a>
-			`
-
-}
- 
-			
 			
  </script>
 </body>

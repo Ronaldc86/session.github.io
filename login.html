@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>HTML</title>
+  
+  <!-- HTML -->
+  
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  
+  <div class="gridContainer-login">
+    <div class="header2">
+    
+    </div>
+    <div class="login-form"> 
+   
+      <img src="images/user.png" alt="Avatar" class="avatar">
+        <div id="welcomeid"></div>
+   
+    <div class="container1">
+  <input type="text" name="username" id="username" value="" placeholder="User Name" />
+  <input type="password" name="password" id="password" value="" placeholder="Password" />
+   
+  <button type="button" id="id02"class="btn-signin">Sign in</button>
+  
+  <div id="result"></div>
+  
+      <a href="index.html"> <button type="button" class="cancelbtn1">Cancel</button></a>
+  </div>
+    
+    </div>
+  </div>
+  
+
+  <!-- Project -->
+  <script src="main.js"></script>
+  <script>
+      
+  // check if current user is still logged in
+    var currentUser = localStorage.getItem("__currentUser", false)
+    
+		currentUser = JSON.parse(currentUser)
+		document.getElementById('welcomeid').innerHTML = `
+			<a class="welcome-login "href="home.html">${currentUser.username} you're in! <br /> go to your</a><br />
+		<a class="dashboard" href="home.html">dashboard.</a>
+		
+		`
+  </script>
+ 
+</body>
+</html

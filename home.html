@@ -12,14 +12,46 @@
 
   <!-- Custom Styles -->
   <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 </head>
 
 <body>
+  <div class="gridContainer-home">
+    <div class="header1">	
+    <p id="welcomeid" class="welcome"></p>
+    </div>
+    
+    
+    
+    <div class="user">	
+    <p id="welcomeid" class="welcome"></p>
+    <img src="images/user.png" alt="" class="user-img"/>
+    </div>
+   
+    <div class="logout"><a href="javascript:void(0)" id="logout"><img src="images/log-out.png" alt="" class="logout-img" />  </a>
+    </div>
+    
+    <div class="addbutton">
+   <a href="add-form.html"><img src="images/add.png" alt="" class="add-img" /></a><h4 class="add-text">Add a new bug.</h4><br>
   
-		<div id="welcomeid"></div>
-		<a href="javascript:void(0)" id="logout">Logout</a>
-		<!--- ENTER THE CONTENT OF HOME HERE -->
-		<a href="add-form.html"><h3>Add New Issue</h3></a>
+   
+      </div>
+
+  
+    <div class="result">
+
+       <div id="result1"></div>
+    </div>
+    
+  </div>
+  
+
+
+	
+		<script src="main.js"></script>
+
+	
+
 	
 		<script>
 			// check if current user is logged in
@@ -40,7 +72,152 @@
 				window.location.href = "./index.html"
 			})
 			
-				
+			
+				let data1 = localStorage.getItem("__issues") // load all users
+
+var id = 0
+
+
+if (!data1) data1 = []
+else {
+  data1 = JSON.parse(data1)
+
+  data1.forEach(function (rowData,idx) {
+  if (!rowData) return
+  id+=1
+ 
+
+let li = document.createElement('li');
+ 
+
+  // Get values from local storage and add html
+ 
+  document.getElementById('result1').appendChild(li).innerHTML = `
+       <button class="btnClose" data-id="${id}">Delete</button>  <button class="doneBtnActive" data-id="${id}" style="${rowData.status=='Closed'?'background:darkgrey':''}">${rowData.status}</button>
+ 
+  <div class="date">Date: ${rowData.d}</div>
+  <div class="time">Time: ${rowData.t}</div><br/>
+ Project Name:  ${rowData.projectName}
+ <div class="line">Code Line: <${rowData.line}></div>
+ <div class="priority">Priority:  ${rowData.priority}</div>
+ Description:  ${rowData.textArea}
+ 
+     
+        `
+      
+        
+  })
+}
+
+
+
+
+
+function myFunction(){
+id+=1
+  // Create Li
+let li = document.createElement('li');
+
+
+  // Get values
+
+let d = new Date().toLocaleDateString();
+     document.getElementById("date1").value;
+ let t = new Date().toLocaleTimeString();
+     document.getElementById("time1").value;
+ let projectName = document.getElementById('projectName').value;    
+ let line = document.getElementById('line').value;
+
+let priority = document.getElementById('priority').value;
+let textArea = document.getElementById('textArea').value;
+
+
+// clear inputs
+
+
+  // Create text
+
+let text2 = document.createTextNode(d);
+li.appendChild(text2);
+let text3 = document.createTextNode(t);
+li.appendChild(text3);
+let text4 = document.createTextNode(projectName);
+li.appendChild(text4);
+let text5 = document.createTextNode(line);
+li.appendChild(text5);
+let text6 = document.createTextNode(priority);
+li.appendChild(text6);
+let text7 = document.createTextNode(textArea);
+li.appendChild(text7);
+
+
+
+document.getElementById('result1').appendChild(li).innerHTML = `
+   <button class="btnClose" data-id="${id}">Delete</button>  
+     <button class="doneBtnActive" data-id="${id}">Active</button>
+ 
+ <div class="date">Date: ${d}</div><
+  <div class="time">Date: ${t}</div><br/>
+<div class="priority">Project Name:  ${projectName}</div>
+<div class="line">Code Line:  <${line}></div>
+ Priority:  ${priority}<br/>
+ Description:  ${textArea}<br/>
+ 
+ 
+    `
+    data1.push({
+      id,
+      
+      d,
+      t,
+      projectName,
+      line,
+      priority,
+      textArea,
+      status: 'Active'
+     
+      
+    })
+    localStorage.setItem("__issues", JSON.stringify(data1))
+} 
+
+
+function hasClass( target, className ) {
+
+    return new RegExp('(\\s|^)' + className + '(\\s|$)').test(target.className);
+
+}
+
+   // setup click event listeners for dynamic buttons such as active and delete
+    document.addEventListener('click', function (e) {
+    if (hasClass(e.target, 'btnClose')) {
+      let myID = e.target.getAttribute('data-id')
+      data1.forEach(function (rowData, idx) {
+        if (!rowData) return;
+        if (rowData.id == myID) delete data1[idx]
+      })
+    
+      e.target.parentElement.remove()
+      
+    }
+    if (hasClass(e.target, 'doneBtnActive')) {
+      console.log(e.target)
+      e.target.innerHTML = 'Closed';
+      e.target.style.backgroundColor = "darkgrey";
+      let myID = e.target.getAttribute('data-id')
+      data1.forEach(function (rowData, idx) {
+        if (!rowData) return;
+        if (rowData.id == myID) data1[idx].status = 'Closed'
+      })
+    }
+    
+    localStorage.setItem("__issues", JSON.stringify(data1))
+}, false);
+			
+  
+			
+  
 		</script>
+		
 	</body>
 </html>

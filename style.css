@@ -1,29 +1,1381 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 body {
     font-size: 15pt;
+    background-image: linear-gradient(#2193b0, #6dd5ed);
+    width: 100%;
+  height:  100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
-.form-item {
-	margin-bottom: 10px;
-}
+
 .form-label {
 	display: block;
 	font-weight: 600;
 }
-.form-error { font-size: 11px; color: red; }
+li{
+  list-style-type: none;
+}
+  .gridContainer-index {
+  display: grid;
+  grid-template-rows:0.2fr 5fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr ;
+  grid-template-areas: 'header header header header user-active logout1'
+  'buttons buttons buttons buttons buttons buttons'
+  'login-form login-form login-form login-form login-form login-form'
+
+;
+width: 100%;
+
+ 
+}
+
+.header{
+  grid-area: header;
+  display: flex;
+  align-items: center;
+  padding: 20px 0 20px 10px;
+  background-color: black;
+
+
+ 
+}
+.user-active{
+  grid-area: user-active;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  background-color: black;
+}
+.logout1{
+  grid-area: logout1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+}
+
+ .buttons{
+   grid-area: buttons;
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
+   align-items: center;
+   
+   
+  
+ }
+ .login-form{
+   grid-area: login-form;
+   display: flex;
+   text-align: center;
+   
+ }
+
+
+  .bugText{
+    color: white;
+    padding-right: 5px;
+    padding-left: 20px;
+    
+    
+  }
+  .trackerText{
+    color: #00A8E1;
+    font-size: 35pt;
+   
+  }
+  .btn-signup{
+    width: 250px;
+    border: 2px solid white;
+    border-radius: 30px;
+    background-color: transparent;
+    color: white;
+    font-weight: bold;
+    font-size: 12pt;
+    padding: 12px 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    
+    
+  }
+  .btn-signin{
+    width: 250px;
+    border: 2px solid white;
+    border-radius: 30px;
+    background-color: transparent;
+    color: white;
+    font-weight: bold;
+    font-size: 12pt;
+    padding: 12px 20px;
+    cursor: pointer;
+    
+    
+  }
+  .btn-signin2{
+    width: 250px;
+    border: 2px solid black;
+    border-radius: 30px;
+    background-color: transparent;
+    color:  #00A8E1;
+    font-weight: bold;
+    font-size: 12pt;
+    padding: 12px 20px;
+    cursor: pointer;
+    
+    
+  }
+  .btn-signin-form{
+    width: 180px;
+    border: 2px solid black;
+    border-radius: 30px;
+    background-color: transparent;
+    color: #00A8E1;
+    font-weight: bold;
+    font-size: 12pt;
+    padding: 12px 20px;
+    cursor: pointer;
+    
+    
+  }
+   .btn-signup-form{
+    width: 180px;
+    border: 2px solid black;
+    border-radius: 30px;
+    background-color: transparent;
+    color: #00A8E1;
+    font-weight: bold;
+    font-size: 12pt;
+    padding: 12px 20px;
+    cursor: pointer;
+    
+    
+  }
+  .btn-signup:hover{
+    background-color: #0EECB7;
+  }
+  .btn-signin:hover {
+    background-color: #0EECB7;
+  }
+  .error-text{
+    color: red;
+    padding: 10px 0 10px 0;
+    background-color: #0EECB7;
+    border-radius: 7px;
+    margin-top: 20px;
+    text-align: center;
+    
+    
+  }
+    .error-text1{
+    color: red;
+    padding: 5px 0 5px 0;
+    background-color: #0EECB7;
+    border-radius: 7px;
+    font-size: 10pt;
+    font-weight: bold;
+  
+  
+    text-align: center;
+    
+    
+  }
+  .logout-img1{
+    width: 30px;
+    height: 30px;
+  }
+  /* The Modal (background) */
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%;
+  overflow: auto; 
+  background-color: white;
+  background-color: rgba(0,0,0,0.4);
+  padding-top: 60px;
+  
+}
+.modal-content {
+  background-color: #fefefe;
+  margin: 50px auto;
+  border: 1px solid #888;
+  width: 80%; 
+  border-radius: 7px;
+}
+
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)}
+  to {-webkit-transform: scale(1)}
+}
+
+@keyframes animatezoom {
+  from {transform: scale(0)}
+  to {transform: scale(1)}
+}
+ /* Bordered form */
+
+
+/* Full-width inputs */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 25px;
+  background-color: white;
+  resize: vertical;
+}
+
+
+
+
+
+/* Extra style for the cancel button (red) */
+.cancelbtn {
+    width: 180px;
+    border: 2px solid black;
+    border-radius: 30px;
+    background-color: transparent;
+    color: #00A8E1;
+    font-weight: bold;
+    font-size: 12pt;
+    padding: 12px 20px;
+    cursor: pointer;
+    
+}
+
+/* Center the avatar image inside this container */
+.animate__animated{
+  text-align: center;
+  margin: 24px 0 12px 0;
+}
+
+/* Avatar image */
+img.avatar {
+  width: 40%;
+  border-radius: 50%;
+}
+
+/* Add padding to containers */
+.container1 {
+  padding: 16px;
+ 
+}
+.gretting{
+  color: #00A8E1;
+  padding: 10px 0 10px 0;
+  
+}
+.checklist-img{
+  width: 50px;
+  height: 50px;
+}
+
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+    display: block;
+    float: none;
+  }
+  .cancelbtn {
+    width: 100%;
+  }
+}
+  
+  /* Sign up form */
+  
+    .gridContainer-register {
+  display: grid;
+  grid-template-rows: 0.2fr 2fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr ;
+  grid-template-areas: 'header header header header header header'
+  'signup-form signup-form signup-form signup-form signup-form signup-form'
+  'register-form register-form register-form register-form register-form register-form'
+;
+width: 100%;
+grid-row-gap: 150px;
+ 
+}
+
+.header{
+  grid-area: header;
+  display: flex;
+  align-items: center;
+  padding: 20px 0 20px 10px;
+  background-color: black;
+
+
+ 
+}
+
+ .register-form{
+   grid-area: register-form;
+   display: flex;
+   justify-content: center;
+   justify-content: space-evenly;
+  
+   flex-direction: column;
+   text-align: center;
+   
+   
+  
+ }
+ .signup-form{
+   grid-area: signup-form;
+   display: flex;
+   justify-content: center;
+   justify-content: space-evenly;
+   flex-direction: column;
+   text-align: center;
+ }
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;  
+  border: 1px solid #ccc;
+  border-radius: 4px; 
+  box-sizing: border-box;
+  margin-top: 20px;
+  margin-bottom: 25px; 
+  background-color: white;
+  resize: vertical;
+}
+.home-img{
+  width: 40px;
+  height: 40px;
+  margin-left: 20px;
+  border: 2px dotted white;
+  border-radius: 50%;
+}
+
+/* login*/
+  .gridContainer-login {
+  display: grid;
+  grid-template-rows: 0.1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr ;
+  grid-template-areas: 
+  'header2 header2 header2 header2 header2 header2'
+ 'login-form login-form login-form login-form login-form login-form'
+;
+width: 100%;
+
+ 
+}
+.header2{
+  grid-area: header2;
+  display: flex;
+  justify-content: flex-end;
+  
+}
+
+
+.login-form{
+  grid-area: login-form;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  
+}
+.cancelbtn1 {
+    width: 250px;
+    border: 2px solid white;
+    border-radius: 30px;
+    background-color: transparent;
+    color: white;
+    font-weight: bold;
+    font-size: 12pt;
+    padding: 12px 20px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+.welcome-login{
+  color: white;
+  
+}
+.welcome-login:link{
+  text-decoration: none;
+}
+.dashboard{
+  background-color: black;
+  color: white;
+  
+  padding: 5px 15px 5px 15px;
+  margin-top: 50px;
+}
+.dashboard:link{
+  text-decoration: none;
+}
+/* Home */
+ .gridContainer-home {
+  display: grid;
+  grid-template-rows: 0.2fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr ;
+  grid-template-areas: 'header1 header1 header1 header1 user logout'
+  'addbutton addbutton addbutton addbutton addbutton addbutton'
+  'result result result result result result'
+;
+width: 100%;
+ 
+}
+
+.header1{
+  grid-area: header1;
+  display: flex;
+  align-items: center;
+  padding: 20px 0 20px 10px;
+  background-color: black;
+
+
+ 
+}
+ 
+.user{
+  grid-area: user;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: black;
+
+
+ 
+}
+ 
+
+.logout{
+  grid-area: logout;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0 20px 10px;
+  background-color: black;
+
+
+ 
+}
+.addbutton{
+  grid-area: addbutton;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  padding: 20px 0 20px 10px;
+  
+}
+.add-text{
+  color: white;
+}
+
+.result{
+  grid-area: result;
+  
+  padding: 20px 20px 20px 20px;
+  
+
+
+ 
+}
+.logout-img{
+  width: 30px;
+  height: 30px;
+  margin-top: 10px;
+}
+.user-img{
+  width: 30px;
+  height: 30px;
+  margin-top: 10px;
+}
+.add-img{
+  width: 80px;
+  height: 80px;
+  
+}
+.welcome{
+  color: white;
+}
+.text-link:link{
+  color: white;
+  text-decoration: none;
+}
+
+.text-link:visited{
+  color: white;
+  text-decoration: none;
+}
+.text-link:active{
+  color: white;
+  text-decoration: none;
+}
+/* Style myli */
+
+li{
+
+  width:100%;
+  display: inline-block;
+  margin: 5px 0;
+  padding: 20px 20px 20px 20px;
+  
+  overflow: hidden;
+  text-overflow: ellipsis;
+ color: white;
+ background-color: black;
+ border-radius: 7px;
+ border: none;
+  font-family: Arial, Helvetica, sans-serif;
+  
+  }
    .btnClose{
     position: absolute;
-   
-     right: 30px;
-  
-     background-image: linear-gradient(to right, #e52d27,#b31217);
+    right: 30px;
+    background-color: white;  
+    color:  #00A8E1;
+    padding: 2px 10px 2px 10px;
+    width: 80px;
+     text-decoration: none;
+     display: inline-block;
+     border: 2px solid black;
+     border-radius: 30px;
+     font-weight: bold;
+     font-size: 10pt;
+    font-family: 'Roboto', sans-serif;
+    
+   }
+   .doneBtnActive{
+     position: absolute;
+     right: 120px;
+     background-color: seagreen;
      color: white;
-     padding: 6px 12px 6px 12px;
+     padding: 4px 10px 4px 10px;
+     width: 80px;
      text-decoration: none;
      display: inline-block;
      border: none;
-     border-radius: 5px;
+
+     border-radius: 30px;
      font-weight: bold;
-     font-size: 12pt;
+     font-size: 10pt;
+    font-family: Arial, Helvetica, sans-serif;
+     
+   }
+   .bug-form-error{
+     
+     color: red;
+    margin-top: 20px;
+    background-color: #0EECB7;
+    border-radius: 7px;
+    font-size: 12pt;
+    font-weight: bold;
+    text-align: center;
+  
+    
+   }
+   
+ 
+/* Add bug form */
+ .gridContainer-bugform {
+  display: grid;
+  grid-template-rows: 0.2fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr ;
+  grid-template-areas: 'header2 header2 header2 header2 user2 logout2'
+  'bug-form bug-form bug-form bug-form bug-form bug-form'
+
+;
+width: 100%;
+
+}
+
+.header2{
+  grid-area: header2;
+  display: flex;
+  align-items: center;
+  padding: 20px 0 20px 10px;
+  background-color: black;
+
+
+ 
+}
+ .user2{
+  grid-area: user2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: black;
+
+
+ 
+}
+ 
+
+.logout2{
+  grid-area: logout2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0 20px 10px;
+  background-color: black;
+}
+.bug-form{
+  grid-area: bug-form;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  
+}
+.container5{
+  border-radius: 5px;
+  padding: 20px;
+}
+.input-line{
+ width: 100%;
+ padding: 12px;
+ border: 1px solid #ccc;
+ border-radius: 4px;
+ box-sizing: border-box;
+ 
+ margin-bottom: 25px;
+ background-color: white;
+ resize: vertical;
+}
+.btn-signin-bug{
+  width: 250px;
+    border: 2px solid white;
+    border-radius: 30px;
+    background-color: transparent;
+    color: white;
+    font-weight: bold;
+    font-size: 12pt;
+    padding: 12px 20px;
+    margin-top: 20px;
+    cursor: pointer;
+    
+  
+}
+
+/* Style elements inside Li*/
+.date{
+  color: #00A8E1;
+  font-weight: bold;
+ 
+}
+.time{
+  color: #00A8E1;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.line{
+  color: #A94EDA;
+  font-weight: bold;
+  
+}
+.priority{
+  color: #E6D941;
+  font-weight: bold;
+}
+
+   }
+  
+   @media only screen and (max-width: 600px) {
+  
+  .gridContainer-index {
+  display: grid;
+  grid-template-rows:0.2fr 5fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr ;
+  grid-template-areas: 'header header header header user-active logout1'
+  'buttons buttons buttons buttons buttons buttons'
+  'login-form login-form login-form login-form login-form login-form'
+
+;
+width: 100%;
+
+ 
+}
+
+.header{
+  grid-area: header;
+  display: flex;
+  align-items: center;
+  padding: 20px 0 20px 10px;
+  background-color: black;
+
+
+ 
+}
+.user-active{
+  grid-area: user-active;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  background-color: black;
+}
+.logout1{
+  grid-area: logout1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+}
+
+ .buttons{
+   grid-area: buttons;
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
+   align-items: center;
+   
+   
+  
+ }
+ .login-form{
+   grid-area: login-form;
+   display: flex;
+   text-align: center;
+   
+ }
+
+
+  .bugText{
+    color: white;
+    padding-right: 5px;
+    padding-left: 20px;
+    
+    
+  }
+  .trackerText{
+    color: #00A8E1;
+    font-size: 35pt;
+   
+  }
+  .btn-signup{
+    width: 250px;
+    border: 2px solid white;
+    border-radius: 30px;
+    background-color: transparent;
+    color: white;
+    font-weight: bold;
+    font-size: 12pt;
+    padding: 12px 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    
+    
+  }
+  .btn-signin{
+    width: 250px;
+    border: 2px solid white;
+    border-radius: 30px;
+    background-color: transparent;
+    color: white;
+    font-weight: bold;
+    font-size: 12pt;
+    padding: 12px 20px;
+    cursor: pointer;
+    
+    
+  }
+  .btn-signin2{
+    width: 250px;
+    border: 2px solid black;
+    border-radius: 30px;
+    background-color: transparent;
+    color:  #00A8E1;
+    font-weight: bold;
+    font-size: 12pt;
+    padding: 12px 20px;
+    cursor: pointer;
+    
+    
+  }
+  .btn-signin-form{
+    width: 180px;
+    border: 2px solid black;
+    border-radius: 30px;
+    background-color: transparent;
+    color: #00A8E1;
+    font-weight: bold;
+    font-size: 12pt;
+    padding: 12px 20px;
+    cursor: pointer;
+    
+    
+  }
+   .btn-signup-form{
+    width: 180px;
+    border: 2px solid black;
+    border-radius: 30px;
+    background-color: transparent;
+    color: #00A8E1;
+    font-weight: bold;
+    font-size: 12pt;
+    padding: 12px 20px;
+    cursor: pointer;
+    
+    
+  }
+  .btn-signup:hover{
+    background-color: #0EECB7;
+  }
+  .btn-signin:hover {
+    background-color: #0EECB7;
+  }
+  .error-text{
+    color: red;
+    padding: 10px 0 10px 0;
+    background-color: #0EECB7;
+    border-radius: 7px;
+    margin-top: 20px;
+    text-align: center;
+    
+    
+  }
+    .error-text1{
+    color: red;
+    padding: 5px 0 5px 0;
+    background-color: #0EECB7;
+    border-radius: 7px;
+    font-size: 10pt;
+    font-weight: bold;
+  
+  
+    text-align: center;
+    
+    
+  }
+  .logout-img1{
+    width: 30px;
+    height: 30px;
+  }
+  /* The Modal (background) */
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%;
+  overflow: auto; 
+  background-color: white;
+  background-color: rgba(0,0,0,0.4);
+  padding-top: 60px;
+  
+}
+.modal-content {
+  background-color: #fefefe;
+  margin: 50px auto;
+  border: 1px solid #888;
+  width: 80%; 
+  border-radius: 7px;
+}
+
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)}
+  to {-webkit-transform: scale(1)}
+}
+
+@keyframes animatezoom {
+  from {transform: scale(0)}
+  to {transform: scale(1)}
+}
+ /* Bordered form */
+
+
+/* Full-width inputs */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 25px;
+  background-color: white;
+  resize: vertical;
+}
+
+
+
+
+
+/* Extra style for the cancel button (red) */
+.cancelbtn {
+    width: 180px;
+    border: 2px solid black;
+    border-radius: 30px;
+    background-color: transparent;
+    color: #00A8E1;
+    font-weight: bold;
+    font-size: 12pt;
+    padding: 12px 20px;
+    cursor: pointer;
+    
+}
+
+/* Center the avatar image inside this container */
+.animate__animated{
+  text-align: center;
+  margin: 24px 0 12px 0;
+}
+
+/* Avatar image */
+img.avatar {
+  width: 40%;
+  border-radius: 50%;
+}
+
+/* Add padding to containers */
+.container1 {
+  padding: 16px;
+ 
+}
+.gretting{
+  color: #00A8E1;
+  padding: 10px 0 10px 0;
+  
+}
+.checklist-img{
+  width: 50px;
+  height: 50px;
+}
+
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+    display: block;
+    float: none;
+  }
+  .cancelbtn {
+    width: 100%;
+  }
+}
+  
+  /* Sign up form */
+  
+    .gridContainer-register {
+  display: grid;
+  grid-template-rows: 0.2fr 2fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr ;
+  grid-template-areas: 'header header header header header header'
+  'signup-form signup-form signup-form signup-form signup-form signup-form'
+  'register-form register-form register-form register-form register-form register-form'
+;
+width: 100%;
+grid-row-gap: 150px;
+ 
+}
+
+.header{
+  grid-area: header;
+  display: flex;
+  align-items: center;
+  padding: 20px 0 20px 10px;
+  background-color: black;
+
+
+ 
+}
+
+ .register-form{
+   grid-area: register-form;
+   display: flex;
+   justify-content: center;
+   justify-content: space-evenly;
+  
+   flex-direction: column;
+   text-align: center;
+   
+   
+  
+ }
+ .signup-form{
+   grid-area: signup-form;
+   display: flex;
+   justify-content: center;
+   justify-content: space-evenly;
+   flex-direction: column;
+   text-align: center;
+ }
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;  
+  border: 1px solid #ccc;
+  border-radius: 4px; 
+  box-sizing: border-box;
+  margin-top: 20px;
+  margin-bottom: 25px; 
+  background-color: white;
+  resize: vertical;
+}
+.home-img{
+  width: 40px;
+  height: 40px;
+  margin-left: 20px;
+  border: 2px dotted white;
+  border-radius: 50%;
+}
+
+/* login*/
+  .gridContainer-login {
+  display: grid;
+  grid-template-rows: 0.1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr ;
+  grid-template-areas: 
+  'header2 header2 header2 header2 header2 header2'
+ 'login-form login-form login-form login-form login-form login-form'
+;
+width: 100%;
+
+ 
+}
+.header2{
+  grid-area: header2;
+  display: flex;
+  justify-content: flex-end;
+  
+}
+
+
+.login-form{
+  grid-area: login-form;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  
+}
+.cancelbtn1 {
+    width: 250px;
+    border: 2px solid white;
+    border-radius: 30px;
+    background-color: transparent;
+    color: white;
+    font-weight: bold;
+    font-size: 12pt;
+    padding: 12px 20px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+.welcome-login{
+  color: white;
+  
+}
+.welcome-login:link{
+  text-decoration: none;
+}
+.dashboard{
+  background-color: black;
+  color: white;
+  
+  padding: 5px 15px 5px 15px;
+  margin-top: 50px;
+}
+.dashboard:link{
+  text-decoration: none;
+}
+/* Home */
+ .gridContainer-home {
+  display: grid;
+  grid-template-rows: 0.2fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr ;
+  grid-template-areas: 'header1 header1 header1 header1 user logout'
+  'addbutton addbutton addbutton addbutton addbutton addbutton'
+  'result result result result result result'
+;
+width: 100%;
+ 
+}
+
+.header1{
+  grid-area: header1;
+  display: flex;
+  align-items: center;
+  padding: 20px 0 20px 10px;
+  background-color: black;
+
+
+ 
+}
+ 
+.user{
+  grid-area: user;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: black;
+
+
+ 
+}
+ 
+
+.logout{
+  grid-area: logout;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0 20px 10px;
+  background-color: black;
+
+
+ 
+}
+.addbutton{
+  grid-area: addbutton;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  padding: 20px 0 20px 10px;
+  
+}
+.add-text{
+  color: white;
+}
+
+.result{
+  grid-area: result;
+  
+  padding: 20px 20px 20px 20px;
+  
+
+
+ 
+}
+.logout-img{
+  width: 30px;
+  height: 30px;
+  margin-top: 10px;
+}
+.user-img{
+  width: 30px;
+  height: 30px;
+  margin-top: 10px;
+}
+.add-img{
+  width: 80px;
+  height: 80px;
+  
+}
+.welcome{
+  color: white;
+}
+.text-link:link{
+  color: white;
+  text-decoration: none;
+}
+
+.text-link:visited{
+  color: white;
+  text-decoration: none;
+}
+.text-link:active{
+  color: white;
+  text-decoration: none;
+}
+/* Style myli */
+
+li{
+
+  width:100%;
+  display: inline-block;
+  margin: 5px 0;
+  padding: 20px 20px 20px 20px;
+  
+  overflow: hidden;
+  text-overflow: ellipsis;
+ color: white;
+ background-color: black;
+ border-radius: 7px;
+ border: none;
+  font-family: Arial, Helvetica, sans-serif;
+  
+  }
+   .btnClose{
+    position: absolute;
+    right: 30px;
+    background-color: white;  
+    color:  #00A8E1;
+    padding: 2px 10px 2px 10px;
+    width: 80px;
+     text-decoration: none;
+     display: inline-block;
+     border: 2px solid black;
+     border-radius: 30px;
+     font-weight: bold;
+     font-size: 10pt;
     font-family: 'Roboto', sans-serif;
     
+   }
+   .doneBtnActive{
+     position: absolute;
+     right: 120px;
+     background-color: seagreen;
+     color: white;
+     padding: 4px 10px 4px 10px;
+     width: 80px;
+     text-decoration: none;
+     display: inline-block;
+     border: none;
+
+     border-radius: 30px;
+     font-weight: bold;
+     font-size: 10pt;
+    font-family: Arial, Helvetica, sans-serif;
+     
+   }
+   .bug-form-error{
+     
+     color: red;
+    margin-top: 20px;
+    background-color: #0EECB7;
+    border-radius: 7px;
+    font-size: 12pt;
+    font-weight: bold;
+    text-align: center;
+  
+    
+   }
+   
+ 
+/* Add bug form */
+ .gridContainer-bugform {
+  display: grid;
+  grid-template-rows: 0.2fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr ;
+  grid-template-areas: 'header2 header2 header2 header2 user2 logout2'
+  'bug-form bug-form bug-form bug-form bug-form bug-form'
+
+;
+width: 100%;
+
+}
+
+.header2{
+  grid-area: header2;
+  display: flex;
+  align-items: center;
+  padding: 20px 0 20px 10px;
+  background-color: black;
+
+
+ 
+}
+ .user2{
+  grid-area: user2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: black;
+
+
+ 
+}
+ 
+
+.logout2{
+  grid-area: logout2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0 20px 10px;
+  background-color: black;
+}
+.bug-form{
+  grid-area: bug-form;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  
+}
+.container5{
+  border-radius: 5px;
+  padding: 20px;
+}
+.input-line{
+ width: 100%;
+ padding: 12px;
+ border: 1px solid #ccc;
+ border-radius: 4px;
+ box-sizing: border-box;
+ 
+ margin-bottom: 25px;
+ background-color: white;
+ resize: vertical;
+}
+.btn-signin-bug{
+  width: 250px;
+    border: 2px solid white;
+    border-radius: 30px;
+    background-color: transparent;
+    color: white;
+    font-weight: bold;
+    font-size: 12pt;
+    padding: 12px 20px;
+    margin-top: 20px;
+    cursor: pointer;
+    
+  
+}
+
+/* Style elements inside Li*/
+.date{
+  color: #00A8E1;
+  font-weight: bold;
+ 
+}
+.time{
+  color: #00A8E1;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.line{
+  color: #A94EDA;
+  font-weight: bold;
+  
+}
+.priority{
+  color: #E6D941;
+  font-weight: bold;
+}
+
    }

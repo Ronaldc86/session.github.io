@@ -42,25 +42,37 @@ function register () {
   // validate user input
   var errors = {}
   if (username.length < 1) {
-    errors.username = "Username is required."
+    errors.username =  `
+        <div class="error-text1">Username is required.</div>
+        `
   }
   if (email.length < 1) {
-    errors.email = "Email is required."
+    errors.email =  `
+        <div class="error-text1">Email is required.</div>
+        `
   }
   if (password.length < 1) {
-    errors.password = "Password is required."
+    errors.password =  `
+        <div class="error-text1">Password is required.</div>
+        `
   }
   if (password != password2) {
-    errors.password = "Passwords should match."
+    errors.password =  `
+        <div class="error-text1">Password should match.</div>
+        `
   }
 
   // check if username or email exists in data
   $data.forEach(function (rowData) {
     if (rowData.username == username) {
-      errors.username = "Username already exists."
+      errors.username =  `
+          <div class="error-text1">Username already exist.</div>
+          `
     }
     if (rowData.email == email) {
-      errors.username = "Email already exists."
+      errors.username =  `
+          <div class="error-text1">Email already exist.</div>
+          `
     }
   })
 
@@ -88,7 +100,23 @@ function register () {
   document.getElementById('password').value = ""
   document.getElementById('password-confirm').value = ""
   // prompt successful user registration
-  alert("Registration successful.")
+document.getElementById('username').value;
+  document.getElementById('current-user').innerHTML = `
+  <div class="animate__animated animate__bounceIn">
+  <div class= "gretting">${username} You are in!</div></div>
+  `
+  document.getElementById('checklist').innerHTML = `
+ 
+   <div class="animate__animated animate__bounceIn"><img src="images/checklist.png" alt="" class="checklist-img"/></div>
+  `
+  document.getElementById('btn-signin').innerHTML = `
+ 
+   <a href="login.html"> <div class="animate__animated animate__bounceIn">
+    <input type="button"value="Sign in" class="btn-signin2">
+   </div></a>
+
+   
+  `
 }
 
 function login () {
@@ -99,10 +127,17 @@ function login () {
   // validate user input
   var errors = {}
   if (username.length < 1) {
-    errors.username = "Username is required."
+    errors.username = 
+    `
+    <div class="error-text">Username is required.</div>
+    `
+    
   }
   if (password.length < 1) {
-    errors.password = "Password is required."
+    errors.password =  `
+     
+        <div class="error-text">Password is required.</div>
+        `
   }
   // initialize matching
   var match = 0
@@ -118,7 +153,9 @@ function login () {
 
   // if no match set prompt error invalid username or password.
   if (match < 1) {
-    errors.password = "Username/password is invalid."
+    errors.password =  `
+        <div class="error-text">Username/Password is invalid.</div>
+        `
   }
 
   // check if there are any errors and prompt to user.
@@ -131,9 +168,8 @@ function login () {
   // set current user in local storage.
   localStorage.setItem("__currentUser", JSON.stringify($data[matchIdx]))
   window.location = './home.html'
-  
 }
 
 // setup click events for register and sign in button.
-if (document.getElementById('form-submit')) document.getElementById('form-submit').addEventListener('click', register)
-if (document.getElementById('sign-in-btn')) document.getElementById('sign-in-btn').addEventListener('click', login)
+if (document.getElementById('id03')) document.getElementById('id03').addEventListener('click', register)
+if (document.getElementById('id02')) document.getElementById('id02').addEventListener('click', login)
